@@ -3,9 +3,7 @@ import re
 import regexp
 
 
-
-
-def number_of_sentences(text: str):
+def number_of_sentences(text):
     count = len(re.findall(regexp.SENTENCE_PATTERN, text))
 
     quote_splitting = text.split("\"")
@@ -34,8 +32,20 @@ def number_of_sentences(text: str):
     return count
 
 
+def number_of_non_declaration_sentences(text):
+    count = len(re.findall(regexp.NON_DECLARATIVE_SENTENCE_PATTERN, text))
+
+    quote_splitting = text.split("\"")
+    for i in range(0, len(quote_splitting)):
+        if i % 2 == 1:
+            count -= len(re.findall(regexp.NON_DECLARATIVE_SENTENCE_PATTERN, quote_splitting[i]))
+
+    return count
+
 
 file = open(os.path.join(os.path.dirname(__file__), "data.txt"), "r")
 text = file.readline()
 
 print(number_of_sentences(text))
+print(number_of_non_declaration_sentences(text))
+g
