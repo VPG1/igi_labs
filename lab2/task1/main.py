@@ -50,11 +50,28 @@ def average_length_of_sentences(text):
         text) != 0 else 0
 
 
-def average_length_of_words(text: str):
+def average_length_of_words(text):
     words = re.findall(regexp.WORD_PATTERN, text)
 
     return round(sum(len(word) for word in words) / len(words), 2) if len(words) != 0 else 0
 
+
+def top_k_repeated_ngrams(text, k=10, n=4):
+    words = re.findall(regexp.WORD_PATTERN, text)
+
+    seq = [words[i:] for i in range(n)]
+
+    ngrams = [" ".join(ngram) for ngram in list(zip(*seq))]
+
+    dict = {}
+
+    for ngram in ngrams:
+        if ngram not in dict:
+            dict[ngram] = 1
+        else:
+            dict[ngram] += 1
+
+    return sorted(dict.items(), key=lambda x: x[1], reverse=True)[0:k]
 
 file = open(os.path.join(os.path.dirname(__file__), "data.txt"), "r")
 text = file.readline()
@@ -63,3 +80,4 @@ print(number_of_sentences(text))
 print(number_of_non_declaration_sentences(text))
 print(average_length_of_sentences(text))
 print(average_length_of_words(text))
+print(top_k_repeated_ngrams(text, 3, 2))
