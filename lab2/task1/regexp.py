@@ -1,7 +1,7 @@
 SENTENCE_PATTERN = "[.!\?]+"
 NON_DECLARATIVE_SENTENCE_PATTERN = "[!\?]+"
 
-WORD_PATTERN = "\w*[a-zA-Z]+\w*"  # "(?=.*[a-zA-Z])[a-zA-Z0-9]+" pochemy?
+WORD_PATTERN = "\w*[a-zA-Z]+\w*"
 
 NUMBER_PATTERN = "\b\d+\b"
 
