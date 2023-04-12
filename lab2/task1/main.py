@@ -43,9 +43,17 @@ def number_of_non_declaration_sentences(text):
     return count
 
 
+def average_length_of_sentences(text):
+    words = re.findall(regexp.WORD_PATTERN, text)
+
+    return round(sum(len(word) for word in words) / number_of_sentences(text), 2) if number_of_sentences(
+        text) != 0 else 0
+
+
+
 file = open(os.path.join(os.path.dirname(__file__), "data.txt"), "r")
 text = file.readline()
 
 print(number_of_sentences(text))
 print(number_of_non_declaration_sentences(text))
-g
+print(average_length_of_sentences(text))
