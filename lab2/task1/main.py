@@ -50,6 +50,11 @@ def average_length_of_sentences(text):
         text) != 0 else 0
 
 
+def average_length_of_words(text: str):
+    words = re.findall(regexp.WORD_PATTERN, text)
+
+    return round(sum(len(word) for word in words) / len(words), 2) if len(words) != 0 else 0
+
 
 file = open(os.path.join(os.path.dirname(__file__), "data.txt"), "r")
 text = file.readline()
@@ -57,3 +62,4 @@ text = file.readline()
 print(number_of_sentences(text))
 print(number_of_non_declaration_sentences(text))
 print(average_length_of_sentences(text))
+print(average_length_of_words(text))
