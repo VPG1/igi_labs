@@ -1,2 +1,5 @@
-print("Hello world"
-      "")
+import containerCLI
+
+interface = CLI.containerCLI()
+
+interface.start()
