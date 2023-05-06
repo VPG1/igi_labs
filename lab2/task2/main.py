@@ -1,5 +1,5 @@
 import containerCLI
 
-interface = CLI.containerCLI()
+interface = containerCLI.containerCLI()
 
 interface.start()
