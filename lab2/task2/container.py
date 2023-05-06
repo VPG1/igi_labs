@@ -33,26 +33,62 @@ class Container:
 
         self.user_containers[self.current_user_name].remove(key)
 
-    def find(self, key_list) :
+    def find(self, key_list):
         result_list = []
 
-        for i in range(0, len(key_list)) :
-            try :
+        for i in range(0, len(key_list)):
+            try:
                 key_list[i] = str(int(key_list[i]))
-            except :
+            except:
                 pass
 
-        for key in key_list :
-            if(key in self.user_containers[self.current_user_name]) :
+        for key in key_list:
+            if key in self.user_containers[self.current_user_name]:
                 result_list.append(key)
 
-        if(len(result_list) == 0) :
+        if len(result_list) == 0:
             print("Not found")
-        else :
+        else:
             print(' '.join(result_list))
 
-    def list(self) :
-        if(self.user_containers.get(self.current_user_name) == None) :
+    def list(self):
+        if self.user_containers.get(self.current_user_name) is None:
             print("Dont have elements")
-        else :
+        else:
             print(', '.join(self.user_containers[self.current_user_name]))
+
+    def save(self, path=os.path.join(os.path.dirname(__file__), "data.txt")):
+        try:
+            file = open(path, "w")
+        except:
+            print("file not exist")
+            return
+
+        for username, value in self.user_containers.items():
+            file.write(username + " : " + ' '.join(value) + "\n")
+
+        file.close()
+
+    def load(self, path=os.path.join(os.path.dirname(__file__), "data.txt")):
+        try:
+            file = open(path, "r")
+        except:
+            print("file not exist")
+            return
+
+        for user in file.readlines():
+            if user.split(" ")[0] == self.current_user_name:
+                add_list = user.replace("\n", "").split(" ")[2::]
+                for i in range(0, len(add_list)):
+                    try:
+                        add_list[i] = str(int(add_list[i]))
+                    except:
+                        pass
+
+                if self.user_containers.get(self.current_user_name) is None:
+                    self.user_containers[self.current_user_name] = set(add_list)
+                else:
+                    self.user_containers[self.current_user_name] = self.user_containers[self.current_user_name].union(
+                        set(add_list))
+
+        file.close()
