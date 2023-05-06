@@ -50,3 +50,9 @@ class Container:
             print("Not found")
         else :
             print(' '.join(result_list))
+
+    def list(self) :
+        if(self.user_containers.get(self.current_user_name) == None) :
+            print("Dont have elements")
+        else :
+            print(', '.join(self.user_containers[self.current_user_name]))
