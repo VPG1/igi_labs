@@ -24,3 +24,11 @@ class Container:
         else:
             self.user_containers[self.current_user_name] = self.user_containers[self.current_user_name].union(
                 set(add_list))
+
+    def remove(self, key):
+        try:
+            key = str(int(key))
+        except:
+            pass
+
+        self.user_containers[self.current_user_name].remove(key)
