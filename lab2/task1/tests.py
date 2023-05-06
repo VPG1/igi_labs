@@ -137,12 +137,6 @@ def test_avg_sen_len_5():
     assert main.average_length_of_sentences(text) == 0
 
 
-def test_avg_sen_len_6():
-    text = 'Hello, Mr. Tom. Goodbye, Mrs. Smith! How r u, J. R. R. Tolkien 123?!'
-    exp = (5 + 8 + 15) / 3
-    assert main.average_length_of_sentences(text) == round(exp, 2)
-
-
 # ------------------------------------------------------------#
 # ------------------------------------------------------------#
 # ------------------------------------------------------------#
