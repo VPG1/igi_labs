@@ -92,3 +92,6 @@ class Container:
                         set(add_list))
 
         file.close()
+
+    def switch(self, new_user_name):
+        self.current_user_name = new_user_name
