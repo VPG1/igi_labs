@@ -32,3 +32,21 @@ class Container:
             pass
 
         self.user_containers[self.current_user_name].remove(key)
+
+    def find(self, key_list) :
+        result_list = []
+
+        for i in range(0, len(key_list)) :
+            try :
+                key_list[i] = str(int(key_list[i]))
+            except :
+                pass
+
+        for key in key_list :
+            if(key in self.user_containers[self.current_user_name]) :
+                result_list.append(key)
+
+        if(len(result_list) == 0) :
+            print("Not found")
+        else :
+            print(' '.join(result_list))
