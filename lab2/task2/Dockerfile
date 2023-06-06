@@ -2,7 +2,7 @@ FROM python
 
 WORKDIR "."
 
-COPY ["container_CLI.py", "./"]
+COPY ["containerCLI.py", "./"]
 COPY ["container.py", "./"]
 COPY ["main.py", "./"]
 COPY ["data.txt", "./"]

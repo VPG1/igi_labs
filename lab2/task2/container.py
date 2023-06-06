@@ -6,9 +6,6 @@ class Container:
     user_containers = {}
     current_user_name = ""
 
-    def __init__(self):
-        self.current_user_name = None
-
     def __init__(self, user_name):
         self.current_user_name = user_name
 
@@ -96,10 +93,10 @@ class Container:
     def switch(self, new_user_name):
         self.current_user_name = new_user_name
 
-    def grep(self, regex) :
+    def grep(self, regex):
         result_list = []
 
-        for value in self.user_containers[self.current_user_name] :
+        for value in self.user_containers[self.current_user_name]:
             if re.match(regex, value) is not None:
                 result_list.append(value)
 

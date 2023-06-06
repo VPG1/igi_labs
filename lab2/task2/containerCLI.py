@@ -17,7 +17,11 @@ class containerCLI:
                 case "add":
                     self.storage.add(command[4::].split(", "))
                 case "remove":
-                    self.storage.remove(command.split(" ")[1])
+                    try:
+                        self.storage.remove(command.split(" ")[1])
+                    except Exception:
+                        print("error")
+
                 case "find":
                     self.storage.find(command[5::].split(", "))
                 case "list":
